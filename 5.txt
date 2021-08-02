@@ -1,0 +1,162 @@
+/*		if(a=='B' && b=='L')
+		{
+			RCC->APB2ENR |=(1<<3);
+		
+			for(int i=0;i<29;(i=i+4))
+		{
+		GPIOB->CRL |=((1<<i)|(1<<(i+1)));
+		GPIOB->CRL &=~((1<<(i+2))|(1<<(i+3)));
+		}
+		}
+		
+		if(a=='B' && b=='H')
+		{
+			RCC->APB2ENR |=(1<<3);
+		
+			for(int i=0;i<29;(i=i+4))
+		{
+		GPIOB->CRH |=((1<<i)|(1<<(i+1)));
+		GPIOB->CRH &=~((1<<(i+2))|(1<<(i+3)));
+		}
+		}*/
+
+#include "stm32f10x.h"                  // Device header
+
+void dek(char a,char b);
+//	void re();
+//void de();
+int main()
+{/*
+	//aktiviranje A i B portova
+	RCC->APB2ENR |=(1<<2);
+	RCC->APB2ENR |=(1<<3);
+	
+	
+	
+	//setovanje od A0 do A7 na output 50 Hz
+	for(int i=0;i<29;(i=i+4))
+	{
+		GPIOA->CRL |=((1<<i)|(1<<(i+1)));
+		GPIOA->CRL &=~((1<<(i+2))|(1<<(i+3)));
+		
+		GPIOB->CRL |=((1<<i)|(1<<(i+1)));
+		GPIOB->CRL &=~((1<<(i+2))|(1<<(i+3)));
+	}
+
+	while(1)
+	{
+		GPIOA->BSRR |=0x3F;
+//dek();
+		re();
+		GPIOA->BSRR |=0x06;
+	de();
+		re();
+		GPIOA->BSRR |=0x5B;
+	de();
+		re();
+		GPIOA->BSRR |=0x4F;
+		de();
+		re();
+		GPIOA->BSRR |=0x64;
+	de();
+		re();
+		GPIOA->BSRR |=0x6D;
+	de();
+		re();
+		GPIOA->BSRR |=0x7D;
+	de();
+		re();
+		GPIOA->BSRR |=0x07;
+	de();
+		re();
+		GPIOA->BSRR |=0x7F;
+		de();
+		re();
+		GPIOA->BSRR |=0x6F;
+		de();
+		re();
+		
+		
+		
+		
+		GPIOB->BSRR &=~(1<<0);
+		GPIOB->BSRR &=~(1<<0);
+		GPIOB->BSRR &=~(1<<0);
+		GPIOB->BSRR &=~(1<<0);
+	}
+	
+
+	
+	*/
+	
+	
+	char a='A', b='L';
+	
+	
+	
+	dek('A','L');
+	
+	
+	
+}
+
+void dek(char a,char b)
+{
+	if(a=='A' && b=='L')
+		{
+			RCC->APB2ENR |=(1<<2);
+		
+			for(int i=0;i<29;(i=i+4))
+		{
+		GPIOA->CRL |=((1<<i)|(1<<(i+1)));
+		GPIOA->CRL &=~((1<<(i+2))|(1<<(i+3)));
+		}
+		}
+		
+		if(a=='A' && b=='H')
+		{
+			RCC->APB2ENR |=(1<<2);
+		
+			for(int i=0;i<29;(i=i+4))
+		{
+		GPIOA->CRH |=((1<<i)|(1<<(i+1)));
+		GPIOA->CRH &=~((1<<(i+2))|(1<<(i+3)));
+		}
+		
+		
+		
+		if(a=='B' && b=='L')
+		{
+			RCC->APB2ENR |=(1<<3);
+		
+			for(int i=0;i<29;(i=i+4))
+		{
+		GPIOB->CRL |=((1<<i)|(1<<(i+1)));
+		GPIOB->CRL &=~((1<<(i+2))|(1<<(i+3)));
+		}
+		}
+		
+		if(a=='B' && b=='H')
+		{
+			RCC->APB2ENR |=(1<<3);
+		
+			for(int i=0;i<29;(i=i+4))
+		{
+		GPIOB->CRH |=((1<<i)|(1<<(i+1)));
+		GPIOB->CRH &=~((1<<(i+2))|(1<<(i+3)));
+		}
+		}
+}
+
+void re()
+{
+	for(int i=16;i<33;i++)
+	GPIOA->BSRR |=(1<<i);
+
+}
+
+void de()
+{
+	for(int i=0;i<10000000;i++)
+	{;}
+}
